@@ -1,0 +1,18 @@
+<?php
+/**
+ * Check if the product is already in the wishlist.
+ */
+$isInWishlist = $block->isInWishlist();
+?>
+
+<?php if ($block->isEnabled()): ?>
+    <div class="action towishlist <?php echo $isInWishlist ? 'active' : ''; ?>">
+        <a href="<?php echo $block->getAddToWishlistUrl() ?>"
+           data-post='<?php echo $block->getJsPostData() ?>'
+           data-action="add-to-wishlist"
+           class="action towishlist <?php echo $isInWishlist ? 'active' : ''; ?>"
+           title="<?php echo $block->getAddToWishlistTitle() ?>">
+            <span><?php echo $isInWishlist ? __('Wishlisted') : __('Add to Wishlist'); ?></span>
+        </a>
+    </div>
+<?php endif; ?>

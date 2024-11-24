@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+     <head>
+        <!-- <script src="js/slick.min.js"/> -->
+      </head>
+    <body>
+
+       
+   
+    
+        <referenceBlock name="sidebar.additional" remove="true"/>
+        <referenceBlock name="footer" remove="true"/>
+
+        <move element="product.info.description" destination="main" after="-" />
+        <!-- Remove Compare Links -->
+         <referenceBlock name="reviews.tab" remove="true" />
+        <referenceBlock name="product.info.addto.compare" remove="true"/>   
+        <referenceBlock name="breadcrumbs" remove="true"/>
+        <!-- Remove SKU block -->
+        <referenceBlock name="product.info.sku" remove="true"/>
+
+        <!-- Remove In Stock block -->
+        <referenceBlock name="product.info.availability" remove="true"/>
+  
+    </body>
+</page>
+
+ 
+    

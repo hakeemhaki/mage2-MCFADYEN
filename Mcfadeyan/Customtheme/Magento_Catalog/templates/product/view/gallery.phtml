@@ -1,0 +1,65 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * Product media data template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\Gallery
+ * @var $escaper \Magento\Framework\Escaper
+ */
+?>
+
+<?php
+$images = $block->getGalleryImages()->getItems();
+$helper = $block->getData('imageHelper');
+?>
+
+    <div class="product-image-gallery mobile-slide">
+        <?php if (!empty($images)): ?>
+            <?php foreach ($images as $image): ?>
+                <?php
+                $imageUrl = $image->getData('medium_image_url');
+                $imageAlt = $escaper->escapeHtmlAttr($image->getLabel());
+                $imageWidth = $block->getImageAttribute('product_page_image_medium', 'width');
+                $imageHeight = $block->getImageAttribute('product_page_image_medium', 'height');
+                ?>
+                <div class="product-gallery-item">
+                    <img
+                        src="<?= $escaper->escapeUrl($imageUrl) ?>"
+                        alt="<?= $imageAlt ?>"
+                        title="<?= $imageAlt ?>"
+                        <?= $imageWidth ? 'width="' . $escaper->escapeHtmlAttr($imageWidth) . '"' : '' ?>
+                        <?= $imageHeight ? 'height="' . $escaper->escapeHtmlAttr($imageHeight) . '"' : '' ?>
+                        class="gallery-image"
+                    />
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p><?= $escaper->escapeHtml(__('No images available')) ?></p>
+        <?php endif; ?>
+    </div>
+
+
+    <script type="text/javascript">
+       require(['jquery', 'slick'], function($) {
+            $(document).ready(function() {
+                if ($(window).width() <= 768) {
+                    // Initialize the Slick slider for mobile
+                    $('.mobile-slide').slick({
+                        dots: true,
+                        infinite: true,
+                        speed: 300,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        arrows: false // Remove arrows on mobile (you can enable if desired)
+                    });
+                }
+            });
+        });
+    </script>
+
+
+ 

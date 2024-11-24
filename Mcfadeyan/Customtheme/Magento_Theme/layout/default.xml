@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Optimized layout file
+ * for customizing header and footer elements
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Add links block to header panel -->
+        <referenceContainer name="header.panel">
+            <block class="Magento\Framework\View\Element\Html\Links" name="header.links">
+                <arguments>
+                    <argument name="css_class" xsi:type="string">header links</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <!-- Custom header structure -->
+        <referenceContainer name="header-wrapper">
+            <container name="menu.header.main" htmlTag="div" htmlClass="menu-header-main" after="logo">
+                <!-- CMS Block -->
+                <block class="Magento\Cms\Block\Block" name="block_identifier" before="minicart">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">top_nav_link</argument>
+                    </arguments>
+                </block>
+                <container name="menu.header.main.last" htmlTag="div" htmlClass="menu-header-main-last" after="-"/>
+            </container>
+        </referenceContainer>
+
+        <!-- Move catalog navigation to custom header container -->
+        <move element="catalog.topnav" destination="menu.header.main" before="-"/>
+        <move element="top.search" destination="header-wrapper" after="minicart" />
+
+        <!-- Add custom authorization link -->
+        <referenceContainer name="header-wrapper">
+            <block class="Magento\Customer\Block\Account\AuthorizationLink" name="authorization-link-login-custom" template="Magento_Customer::account/link/authorization.phtml" before="minicart"/>
+        </referenceContainer>
+
+        <!-- Footer customizations -->
+        <referenceContainer name="footer">
+            <block class="Magento\Store\Block\Switcher" name="store_switcher" as="store_switcher" after="footer_links" template="Magento_Store::switch/stores.phtml"/>
+        </referenceContainer>
+
+
+
+        <!-- Remove unwanted blocks -->
+        <referenceBlock name="catalog.compare.link" remove="true"/>
+        <referenceBlock name="header.panel" remove="true"/>
+        <referenceBlock name="report.bugs" remove="true"/>
+
+        <!-- Move copyright to before body end -->
+        <move element="copyright" destination="before.body.end"/>
+    </body>
+</page>

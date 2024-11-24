@@ -1,0 +1,35 @@
+<div class="cloth-info-tab">
+    <ul class="tab-navigation">
+        <li class="tab-link active" data-tab="details-tab">Details</li>
+        <li class="tab-link" data-tab="delivery-tab">Delivery</li>
+        <li class="tab-link" data-tab="fit-tab">Fit</li>
+        <li class="tab-link" data-tab="share-tab">Share</li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="details-tab" class="tab-pane active">
+            <h3>Details</h3>
+            <p>Product material: <?php echo $block->escapeHtml($_product->getAttributeText('material')); ?></p>
+            <p>Other details about the product can be included here.</p>
+        </div>
+
+        <div id="delivery-tab" class="tab-pane">
+            <h3>Delivery</h3>
+            <p>Free shipping on orders over $50. Standard delivery takes 3-5 business days.</p>
+        </div>
+
+        <div id="fit-tab" class="tab-pane">
+            <h3>Fit</h3>
+            <p>Refer to our <a href="/size-guide">size guide</a> for detailed fit information.</p>
+        </div>
+
+        <div id="share-tab" class="tab-pane">
+            <h3>Share</h3>
+            <p>
+                Share this product: 
+                <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($block->getUrl()); ?>" target="_blank">Facebook</a> | 
+                <a href="https://twitter.com/share?url=<?php echo urlencode($block->getUrl()); ?>" target="_blank">Twitter</a>
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="search-toggle">
+    <button class="action toggle search" data-action="toggle-search">
+        <i class="fa fa-search"></i>
+    </button>
+</div>
+<div class="block block-search" data-role="search">
+    <div class="block block-title">
+        <span><?php /* @escapeNotVerified */ echo __('Search') ?></span>
+    </div>
+    <div class="block-content">
+        <form class="form minisearch" id="search_mini_form" action="<?php /* @escapeNotVerified */ echo $block->escapeUrl($block->getSearchPostUrl()) ?>" method="get">
+            <div class="field search">
+                <label class="label" for="search">
+                    <span><?php /* @escapeNotVerified */ echo __('Search') ?></span>
+                </label>
+                <div class="control">
+                    <input id="search" type="text" name="q" value="<?php /* @escapeNotVerified */ echo $block->escapeHtml($block->getQueryText()) ?>" placeholder="<?php /* @escapeNotVerified */ echo __('Search') ?>" class="input-text" autocomplete="off"/>
+                    <div id="search_autocomplete" class="search-autocomplete"></div>
+                </div>
+            </div>
+            <div class="actions">
+                <button class="action search" title="<?php /* @escapeNotVerified */ echo __('Search') ?>" type="submit">
+                    <span><?php /* @escapeNotVerified */ echo __('Search') ?></span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
